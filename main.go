@@ -27,9 +27,8 @@ func main() {
 	router := gin.Default()
 
 	router.POST("/api/event", getEventsByTypeAndTimeRangeHandler(db))
-	router.POST("/api/insert-events", insertIvents(db))
+	router.POST("/api/insert-events", insertEvents(db))
 	router.GET("/api/users-with-multiple-event-types", getUsersWithMultipleEventTypes(db))
-	router.GET("/api/users-with-multiple-event-types", insertIvents(db))
 	router.Run(cfg.Service.Addres + cfg.Service.Port)
 
 	defer db.Close()
@@ -46,7 +45,7 @@ func getUsersWithMultipleEventTypes(db *sql.DB) gin.HandlerFunc {
 	}
 }
 
-func insertIvents(db *sql.DB) gin.HandlerFunc {
+func insertEvents(db *sql.DB) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		var events []model.Event
 
