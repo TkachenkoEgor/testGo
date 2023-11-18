@@ -1,0 +1,7 @@
+Service:
+  PORT: :8080
+  ADDRES: localHost
+  CONN_STRING:
+ClickHouse:
+  connection_string:
+  driver_name:
